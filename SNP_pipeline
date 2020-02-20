@@ -1,5 +1,8 @@
+# filter
 java -jar /home/manager/Desktop/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 /media/sf_Desktop/raisa/H202SC20010465/Rawdata/nrf3/nrf3_CSFP200000438-1a_HVG55DSXX_L1_1.fq.gz /media/sf_Desktop/raisa/H202SC20010465/Rawdata/nrf3/nrf3_CSFP200000438-1a_HVG55DSXX_L1_2.fq.gz nrf3_1_trimmed_paired.fq.gz nrf3_1_trimmed_unpaired.fq.gz nrf3_2_trimmed_paired.fq.gz nrf3_2_trimmed_unpaired.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 java -jar /home/manager/Desktop/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 /media/sf_Desktop/raisa/H202SC20010465/Rawdata/nrf4/nrf4_CSFP200000439-1a_HVG55DSXX_L1_1.fq.gz /media/sf_Desktop/raisa/H202SC20010465/Rawdata/nrf4/nrf4_CSFP200000439-1a_HVG55DSXX_L1_2.fq.gz nrf4_1_trimmed_paired.fq.gz nrf4_1_trimmed_unpaired.fq.gz nrf4_2_trimmed_paired.fq.gz nrf4_2_trimmed_unpaired.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+# align with reference
 bwa mem WS220.64_chr.fasta nrf3_1_trimmed_paired.fq.gz nrf3_2_trimmed_paired.fq.gz | java -jar /home/manager/Desktop/picard.jar AddOrReplaceReadGroups I=/dev/stdin O=nrf3.bam SORT_ORDER=coordinate RGID=nrf3 RGLB=nrf3-lib RGPL=ILLUMINA RGPU=nrf3-01 RGSM=nrf3
 bwa mem WS220.64_chr.fasta nrf4_1_trimmed_paired.fq.gz nrf4_2_trimmed_paired.fq.gz | java -jar /home/manager/Desktop/picard.jar
 AddOrReplaceReadGroups I=/dev/stdin O=nrf4.bam SORT_ORDER=coordinate RGID=nrf4 RGLB=nrf4-lib RGPL=ILLUMINA RGPU=nrf4-01 RGSM=nrf4
